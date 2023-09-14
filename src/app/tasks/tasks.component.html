@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="tasks-wrapper">
+                <ng-container *ngIf="tasks$ | async as tasks; else loading">
+                    <div *ngIf="tasks.length > 0">
+                        <mat-button-toggle-group name="taskStatus" (change)="filterTasksByStatus($event)">
+                            <mat-button-toggle [value]="null">{{'TASKS.FILTER.ALL' | translate}}</mat-button-toggle>
+                            <mat-button-toggle [value]="taskStatus.Completed">{{'TASKS.FILTER.COMPLETED' |
+                                translate}}</mat-button-toggle>
+                            <mat-button-toggle [value]="taskStatus.Pending">{{'TASKS.FILTER.PENDING' |
+                                translate}}</mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <mat-card>
+                        <mat-card-content>
+
+                                <mat-list class="mat-list-container" (cdkDropListDropped)="onTaskDropped($event,tasks)" cdkDropList>
+                                    <ng-container *ngIf="(tasks  | taskStatusFilter: listStatus).length; else noMatches">
+                                        <mat-list-item *ngFor="let task of (tasks  | taskStatusFilter: listStatus) as filtered" cdkDrag>
+                                            <mat-card *ngIf="filtered.length">
+                                                <div>
+                                                    <mat-icon>menu</mat-icon>
+                                                    {{task.name}}
+                                                </div>
+                                                <div>
+                                                    <mat-slide-toggle
+                                                        [checked]="task.status == taskStatus.Completed ? true : false"
+                                                        (change)="updateTaskStatus( task , $event )">{{task.status ==
+                                                        taskStatus.Pending?"Pending":"Completed"}}</mat-slide-toggle>
+                                                </div>
+                                                <div>
+                                                    <button mat-icon-button (click)="removeTask(task)">
+                                                        <mat-icon>delete</mat-icon>
+                                                    </button>
+                                                </div>
+                                                <p>
+    
+                                                </p>
+                                            </mat-card>
+                                        </mat-list-item>
+                                    </ng-container>
+                      
+                                    <ng-template #noMatches>
+                                        <!-- Display message when no matches are found -->
+                                        <div *ngIf="tasks.length > 0" class="no-matches-message">No matching tasks found.</div>
+                                      </ng-template>
+                                </mat-list>
+
+                    
+                            <div class="text-center" *ngIf="tasks.length == 0">
+                                <img style="max-width: 150px;" src="/assets/images/task.png" />
+                                <p class="no-tasks-text">
+                                    {{'TASKS.NO_TASKS' | translate}}
+                                </p>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <button mat-flat-button color="primary" (click)="addTask()">{{'TASKS.ADD_TASK' |
+                        translate}}</button>
+                </ng-container>
+
+                <ng-template #loading>
+                    <!-- Display a loading indicator or message if the data is still loading -->
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "TASKS": {
+      "TITLE": "Liste des tâches",
+      "ADD_TASK": "Ajouter une tâche",
+      "FILTER": {
+        "ALL": "Tout",
+        "COMPLETED": "Terminées",
+        "PENDING": "En attente"
+      },
+      "NO_TASKS": "Aucune tâche à afficher."
+    },
+    "ADD_TASK": {
+      "TITLE": "Liste des tâches",
+      "TASK_NAME": "Nom de la tâche",
+      "STATUS": "Statut",
+      "CTA": "Ajouter une tâche",
+      "ACCENT": "Annuler"
+    },
+    "STATUS":{
+      "COMPLETED": "Terminées",
+      "PENDING": "En attente"
+    }
+  }
+  

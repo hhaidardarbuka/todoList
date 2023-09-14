@@ -1,0 +1,21 @@
+<form #form="ngForm" (ngSubmit)="form.valid && addTask()">
+    <h1 mat-dialog-title>{{'ADD_TASK.TITLE' | translate}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>{{'ADD_TASK.TASK_NAME' | translate}}</mat-label>
+            <input matInput [(ngModel)]="task.name" required name="taskName" autofocus>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>{{'ADD_TASK.STATUS' | translate}}</mat-label>
+            <mat-select [(ngModel)]="task.status" name="taskStatus">
+                <mat-option *ngFor="let status of taskStatusList" [value]="status.value">{{status.text}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button>{{'ADD_TASK.ACCENT' | translate}}</button>
+        <button type="submit" mat-flat-button cdkFocusInitial [disabled]="!form.valid"
+            color="primary">{{'ADD_TASK.CTA' | translate}}</button>
+    </div>
+</form>

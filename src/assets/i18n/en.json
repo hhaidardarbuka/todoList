@@ -1,0 +1,23 @@
+{
+    "TASKS":{
+        "TITLE":"Task List",
+        "ADD_TASK":"Add Task",
+        "FILTER":{
+            "ALL":"All",
+            "COMPLETED":"Completed",
+            "PENDING":"Pending"
+        },
+        "NO_TASKS": "No tasks to display."
+    },
+    "ADD_TASK":{
+        "TITLE":"Task List",
+        "TASK_NAME":"Task Name",
+        "STATUS":"Status",
+        "CTA":"Add Task",
+        "ACCENT":"Cancel"
+    },
+    "STATUS":{
+        "PENDING":"Pending",
+        "COMPLETED":"Completed"
+    }
+}
